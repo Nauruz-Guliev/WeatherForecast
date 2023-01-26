@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/feature-forecast" />
             <option value="$PROJECT_DIR$/feature-map" />
+            <option value="$PROJECT_DIR$/feature-search-history" />
             <option value="$PROJECT_DIR$/feature-settings" />
           </set>
         </option>
