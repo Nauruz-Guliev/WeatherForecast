@@ -54,7 +54,7 @@ fun BottomNavigation(navController: NavController) {
 
         )
     BottomNavigation(
-        backgroundColor = colorResource(id = R.color.purple_500),
+        backgroundColor = Color.Cyan,
         contentColor = Color.Black
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -105,6 +105,11 @@ fun NavigationGraph(navController: NavHostController) {
         }
     }
 }
+
+
+
+
+
 
 @Preview(showBackground = true)
 @Composable

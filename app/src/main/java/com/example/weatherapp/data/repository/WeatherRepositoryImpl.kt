@@ -15,7 +15,7 @@ class WeatherRepositoryImpl @Inject constructor(
             Status.Success(
                 data = WeatherMapper
                     .weatherDtoToListOfWeatherInfo(
-                        response = api.getCityWeather(city)
+                        response = api.getForecastByCityName(city)
                     )
             )
         } catch (e: Exception) {

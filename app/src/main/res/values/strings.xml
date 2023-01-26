@@ -3,5 +3,8 @@
     <string name="error">Unknown error</string>
     <string name="location_error">Unable to get your location due to:</string>
     <string name="location_error_unknown">Location is unavailable</string>
+    <string name="title_feature_forecast">Forecast</string>
+    <string name="title_feature_map">Map</string>
+    <string name="title_feature_settings">Settings</string>
 
 </resources>

@@ -14,5 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WeatherApp"
 include ':app'
-include ':map'
-include ':settings'
+
+include ':feature-forecast'
+include ':feature-map'
+include ':feature-settings'
