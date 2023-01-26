@@ -4,6 +4,8 @@ import com.example.weatherapp.data.remote.dto.WeatherResponse
 import com.example.weatherapp.domain.WeatherInfo
 
 object WeatherMapper {
+
+    //todo write cleaner
     fun weatherDtoToListOfWeatherInfo(response: WeatherResponse): List<WeatherInfo> {
         val weatherInfoList = mutableListOf<WeatherInfo>()
         for (i in 0 until response.cnt) {
