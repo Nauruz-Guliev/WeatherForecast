@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -17,11 +17,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.weatherapp.bottomNav.BottomNavigationItem
-import com.example.weatherapp.bottomNav.HomeScreen
-import com.example.weatherapp.bottomNav.MapScreen
-import com.example.weatherapp.bottomNav.SettingsScreen
-import com.example.weatherapp.ui.theme.WeatherAppTheme
+import com.example.weatherapp.presentation.bottomNav.BottomNavigationItem
+import com.example.weatherapp.presentation.bottomNav.HomeScreen
+import com.example.weatherapp.presentation.bottomNav.MapScreen
+import com.example.weatherapp.presentation.bottomNav.SettingsScreen
+import com.example.weatherapp.presentation.theme.WeatherAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

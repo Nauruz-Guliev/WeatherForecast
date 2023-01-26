@@ -1,4 +1,4 @@
-package com.example.weatherapp.bottomNav
+package com.example.weatherapp.presentation.bottomNav
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

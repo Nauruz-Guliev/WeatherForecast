@@ -1,4 +1,4 @@
-package com.example.weatherapp.bottomNav
+package com.example.weatherapp.presentation.bottomNav
 
 import com.example.weatherapp.R
 
