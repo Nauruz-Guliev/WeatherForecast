@@ -3,7 +3,7 @@ package com.example.weatherapp.data.remote.dto
 
 import com.squareup.moshi.Json
 
-data class WeatherResponse(
+data class ForecastResponse(
     val city: City,
     val cnt: Int, // 7
     val cod: String, // 200

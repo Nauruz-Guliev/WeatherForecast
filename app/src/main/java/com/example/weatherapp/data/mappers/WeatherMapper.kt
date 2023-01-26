@@ -1,12 +1,12 @@
 package com.example.weatherapp.data.mappers
 
-import com.example.weatherapp.data.remote.dto.WeatherResponse
+import com.example.weatherapp.data.remote.dto.ForecastResponse
 import com.example.weatherapp.domain.WeatherInfo
 
 object WeatherMapper {
 
     //todo write cleaner
-    fun weatherDtoToListOfWeatherInfo(response: WeatherResponse): List<WeatherInfo> {
+    fun weatherDtoToListOfWeatherInfo(response: ForecastResponse): List<WeatherInfo> {
         val weatherInfoList = mutableListOf<WeatherInfo>()
         for (i in 0 until response.cnt) {
             val singleDayForecast = WeatherInfo(

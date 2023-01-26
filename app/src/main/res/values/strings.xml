@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="error">Unknown error</string>
+    <string name="location_error">Unable to get your location due to:</string>
+    <string name="location_error_unknown">Location is unavailable</string>
+
 </resources>
