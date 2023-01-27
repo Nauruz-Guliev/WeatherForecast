@@ -25,4 +25,26 @@ class WeatherRepositoryImpl @Inject constructor(
             )
         }
     }
+
+    override suspend fun getWeeklyCityWeatherInfo(
+        lat: Double,
+        lon: Double
+    ): Status<List<WeatherInfo>> {
+        return try {
+            Status.Success(
+                data = WeatherMapper
+                    .weatherDtoToListOfWeatherInfo(
+                        response = api.getForecastByCityCoordinates(
+                            long = lon,
+                            lat = lat,
+                        )
+                    )
+            )
+        } catch (e: Exception) {
+            Status.Error(
+                message = e.message ?: "Unknown error",
+                data = null
+            )
+        }
+    }
 }
