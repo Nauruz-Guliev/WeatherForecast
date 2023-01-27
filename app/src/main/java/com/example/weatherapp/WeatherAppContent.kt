@@ -8,6 +8,6 @@ import com.example.weatherapp.theme.WeatherAppTheme
 @Composable
 fun WeatherForecastContent() {
     WeatherAppTheme() {
-        val tabs = remember {}
     }
+
 }
