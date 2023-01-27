@@ -1,7 +1,7 @@
 package com.example.feature_forecast.data.remote.dto
 
-
 import com.squareup.moshi.Json
+
 
 data class ForecastResponse(
     val city: City,
