@@ -5,9 +5,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,6 +19,7 @@ import com.example.feature_forecast.domain.WeatherInfo
 import com.example.feature_forecast.presentation.models.WeatherState
 import com.example.weatherapp.theme.ui.FontColor
 import com.example.weatherapp.theme.ui.Primary
+import com.example.weatherapp.theme.ui.Secondary
 import com.google.accompanist.insets.ui.Scaffold
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,14 +41,22 @@ fun WeatherHomeScreen(
         },
         content = { innerPadding ->
             Box(modifier = Modifier.padding(innerPadding)) {
-                WeatherInfoArea(date = date, weatherInfo = state.weatherInfo!!.get(0))
+                WeatherInfoArea(
+                    date = date,
+                    weatherInfo = state.weatherInfo!!.get(0),
+                    onSeeMoreClicked
+                )
             }
         },
     )
 }
 
 @Composable
-private fun WeatherInfoArea(date: String, weatherInfo: WeatherInfo) {
+private fun WeatherInfoArea(
+    date: String,
+    weatherInfo: WeatherInfo,
+    onSeeMoreClicked: ((WeatherInfo) -> Unit)?
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,8 +66,50 @@ private fun WeatherInfoArea(date: String, weatherInfo: WeatherInfo) {
         TemperatureSection(weatherInfo = weatherInfo)
         SunAppearanceSection(weatherInfo = weatherInfo)
         SecondaryWeatherInfoSection(weatherInfo = weatherInfo)
+        DetailsButtonSection(onSeeMoreClicked = onSeeMoreClicked, weatherInfo = weatherInfo)
     }
 }
+
+@Composable
+private fun DetailsButtonSection(
+    onSeeMoreClicked: ((WeatherInfo) -> Unit)?,
+    weatherInfo: WeatherInfo
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.End
+    ) {
+        TextButton(
+            onClick = { onSeeMoreClicked?.invoke(weatherInfo) },
+            contentPadding = PaddingValues(0.dp),
+            modifier = Modifier
+                .padding(
+                    paddingValues = PaddingValues(
+                        top = 16.dp,
+                        end = 8.dp
+                    )
+                )
+                .clip(shape = RoundedCornerShape(40.dp))
+        ) {
+            Text(
+                modifier = Modifier
+                    .background(color = Secondary, shape = RoundedCornerShape(16.dp))
+                    .padding(
+                        paddingValues = PaddingValues(
+                            top = 8.dp,
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = 8.dp
+                        )
+                    ),
+                text = "See details >",
+                color = Primary,
+                fontSize = 14.sp,
+            )
+        }
+    }
+}
+
 
 @Composable
 private fun SecondaryWeatherInfoSection(weatherInfo: WeatherInfo) {
