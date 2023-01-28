@@ -44,7 +44,7 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    dynamicFeatures = [':feature_forecast', ':feature_map', ':feature_settings', ':feature_search_history']
+    dynamicFeatures = [':feature_forecast', ':feature_map', ':feature_settings', ':feature_search_history', ':common_design']
 }
 
 dependencies {
