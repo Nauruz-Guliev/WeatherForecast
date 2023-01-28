@@ -11,7 +11,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/common_design" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/common_design" />
             <option value="$PROJECT_DIR$/feature_forecast" />
             <option value="$PROJECT_DIR$/feature_map" />
             <option value="$PROJECT_DIR$/feature_search_history" />
