@@ -2,7 +2,10 @@ package com.example.feature_forecast.presentation.composables.homeScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -43,7 +46,7 @@ fun WeatherHomeScreen(
             Box(modifier = Modifier.padding(innerPadding)) {
                 WeatherInfoArea(
                     date = date,
-                    weatherInfo = state.weatherInfo!!.get(0),
+                    weatherInfo = state.weatherInfo!!,
                     onSeeMoreClicked
                 )
             }
@@ -54,7 +57,7 @@ fun WeatherHomeScreen(
 @Composable
 private fun WeatherInfoArea(
     date: String,
-    weatherInfo: WeatherInfo,
+    weatherInfo: List<WeatherInfo>,
     onSeeMoreClicked: ((WeatherInfo) -> Unit)?
 ) {
     Column(
@@ -63,11 +66,81 @@ private fun WeatherInfoArea(
             .background(Primary)
     ) {
         DateSection(date = date)
-        TemperatureSection(weatherInfo = weatherInfo)
-        SunAppearanceSection(weatherInfo = weatherInfo)
-        SecondaryWeatherInfoSection(weatherInfo = weatherInfo)
-        DetailsButtonSection(onSeeMoreClicked = onSeeMoreClicked, weatherInfo = weatherInfo)
+        TemperatureSection(weatherInfo = weatherInfo[0])
+        SunAppearanceSection(weatherInfo = weatherInfo[0])
+        SecondaryWeatherInfoSection(weatherInfo = weatherInfo[0])
+        DetailsButtonSection(onSeeMoreClicked = onSeeMoreClicked, weatherInfo = weatherInfo[0])
+        WeatherWeeklyList(weatherInfoItems = weatherInfo)
     }
+}
+
+@Composable
+private fun WeatherWeeklyList(weatherInfoItems: List<WeatherInfo>) {
+    LazyRow(
+        modifier = Modifier.padding(
+            paddingValues = PaddingValues(top = 24.dp)
+        )
+    ) {
+        items(
+            weatherInfoItems
+        ) { data ->
+            WeatherInfoItem(weatherInfo = data)
+        }
+    }
+}
+
+@Composable
+private fun WeatherInfoItem(weatherInfo: WeatherInfo) {
+    Card(
+        backgroundColor = Primary,
+        modifier = Modifier
+            .padding(16.dp)
+            .width(80.dp),
+        shape = RoundedCornerShape(24.dp)
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(
+                        paddingValues = PaddingValues(
+                            top = 8.dp
+                        )
+                    )
+                    .fillMaxWidth(),
+                text = SimpleDateFormat(
+                    "EEEE",
+                    Locale.US
+                ).format(weatherInfo.day),
+                textAlign = TextAlign.Center
+            )
+            Box(
+                modifier = Modifier
+                    .padding(
+                        paddingValues = PaddingValues(
+                            top = 16.dp
+                        )
+                    )
+                    .size(32.dp)
+                    .background(color = Color.Yellow, shape = RoundedCornerShape(40.dp)),
+            )
+            Text(
+                modifier = Modifier
+                    .padding(
+                        paddingValues = PaddingValues(
+                            top = 8.dp,
+                            bottom = 8.dp
+                        )
+                    )
+                    .fillMaxWidth(),
+                text = weatherInfo.temperatureDay.toString() + "℃",
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+
 }
 
 @Composable
@@ -118,7 +191,7 @@ private fun SecondaryWeatherInfoSection(weatherInfo: WeatherInfo) {
             .fillMaxWidth()
             .padding(
                 paddingValues = PaddingValues(
-                    top = 16.dp,
+                    top = 24.dp,
                 )
             )
     ) {
@@ -158,7 +231,7 @@ private fun SecondaryWeatherInfoColumn(
     ) {
         Text(
             text = primaryText,
-            fontSize = 16.sp
+            fontSize = 20.sp
         )
         Text(
             modifier = modifier.padding(2.dp),
@@ -172,7 +245,7 @@ private fun SecondaryWeatherInfoColumn(
 private fun SunAppearanceSection(weatherInfo: WeatherInfo) {
     Row(
         Modifier
-            .height(IntrinsicSize.Min) //intrinsic measurements
+            .height(IntrinsicSize.Min)
             .fillMaxWidth()
             .padding(
                 paddingValues = PaddingValues(
@@ -285,17 +358,19 @@ private fun createDummyWeatherInfo(): List<WeatherInfo> {
         list.add(
             WeatherInfo(
                 cityName = "Russia, Kazan",
-                day = 1231241,
+                day = "1674${i}92089610".toLong(),
                 weatherDescription = "Sunny",
                 iconId = "10d",
                 temperatureMorning = 12.0,
-                temperatureDay = 12.4,
+                temperatureDay = "${
+                    ((-20..14).random().toDouble() % 14).toInt()
+                }.${(0..99).random()}".toDouble(),
                 temperatureEvening = 13.0,
                 humidity = 12,
                 windSpeed = 24.0,
                 pressure = 12,
-                sunset = 124124,
-                sunrise = 124124,
+                sunset = 1674920859610,
+                sunrise = 1674920859610,
             )
         )
     }

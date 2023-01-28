@@ -13,10 +13,10 @@ data class ForecastResponse(
     data class City(
         val coord: Coord,
         val country: String, // RU
-        val id: Int, // 551487
+        val id: Long, // 551487
         val name: String, // Kazan’
-        val population: Int, // 1104738
-        val timezone: Int // 10800
+        val population: Long, // 1104738
+        val timezone: Long // 10800
     ) {
         data class Coord(
             val lat: Double, // 55.7887
@@ -25,19 +25,19 @@ data class ForecastResponse(
     }
     @Json(name = "")
     data class WeatherData(
-        val clouds: Int, // 97
-        val deg: Int, // 246
-        val dt: Int, // 1674720000
+        val clouds: Long, // 97
+        val deg: Long, // 246
+        val dt: Long, // 1674720000
         @Json(name = "feels_like")
         val feelsLike: FeelsLike,
         val gust: Double, // 14.36
-        val humidity: Int, // 90
+        val humidity: Long, // 90
         val pop: Double, // 0.62
-        val pressure: Int, // 1021
+        val pressure: Long, // 1021
         val snow: Double?, // 0.96
         val speed: Double, // 6.24
-        val sunrise: Int, // 1674708540
-        val sunset: Int, // 1674738155
+        val sunrise: Long, // 1674708540
+        val sunset: Long, // 1674738155
         val temp: Temp,
         val weather: List<Weather>
     ) {
@@ -60,7 +60,7 @@ data class ForecastResponse(
         data class Weather(
             val description: String, // light snow
             val icon: String, // 13d
-            val id: Int, // 600
+            val id: Long, // 600
             val main: String // Snow
         )
     }
