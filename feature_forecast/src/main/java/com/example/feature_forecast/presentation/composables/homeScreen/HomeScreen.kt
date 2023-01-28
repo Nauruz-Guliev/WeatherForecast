@@ -20,9 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.feature_forecast.domain.WeatherInfo
 import com.example.feature_forecast.presentation.models.WeatherState
-import com.example.weatherapp.theme.ui.FontColor
 import com.example.weatherapp.theme.ui.Primary
-import com.example.weatherapp.theme.ui.Secondary
+
 import com.google.accompanist.insets.ui.Scaffold
 import java.text.SimpleDateFormat
 import java.util.*
@@ -274,7 +273,7 @@ private fun SunAppearanceSection(weatherInfo: WeatherInfo) {
 
         Text(
             modifier = Modifier.weight(1.0f),
-            text = "sunset: " + SimpleDateFormat("hh:mm:ss", Locale.US).format(weatherInfo.sunrise),
+            text = "sunset: " + SimpleDateFormat("hh:mm:ss", Locale.US).format(weatherInfo.sunset),
             textAlign = TextAlign.Center,
             color = FontColor
         )
@@ -352,7 +351,7 @@ fun PreviewWindow() {
     )
 }
 
-private fun createDummyWeatherInfo(): List<WeatherInfo> {
+fun createDummyWeatherInfo(): List<WeatherInfo> {
     val list = mutableListOf<WeatherInfo>()
     for (i in 0 until 7) {
         list.add(
@@ -369,8 +368,8 @@ private fun createDummyWeatherInfo(): List<WeatherInfo> {
                 humidity = 12,
                 windSpeed = 24.0,
                 pressure = 12,
-                sunset = 1674920859610,
-                sunrise = 1674920859610,
+                sunset = "167492${(0..10).random()}214117".toLong(),
+                sunrise = "167492${(0..10).random()}083690".toLong(),
             )
         )
     }

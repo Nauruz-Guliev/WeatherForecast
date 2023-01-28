@@ -8,7 +8,6 @@ import android.location.Location
 import android.location.LocationManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.weatherapp.R
 import com.example.feature_forecast.data.exceptions.LocationException
 import com.example.feature_forecast.domain.location.LocationTracker
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -51,7 +50,7 @@ class LocationTrackerImpl @Inject constructor(
                                 value = result
                             ) { throwable ->
                                 throw LocationException(
-                                    message = application.resources.getString(R.string.location_error) +
+                                    message = "location error" +
                                             " ${throwable.message}"
                                 )
                             }

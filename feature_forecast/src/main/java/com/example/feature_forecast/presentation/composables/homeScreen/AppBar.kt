@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.weatherapp.R
+import com.example.feature_forecast.R
 import com.example.weatherapp.theme.ui.Primary
 import com.example.weatherapp.theme.ui.Secondary
 

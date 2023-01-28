@@ -16,10 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.weatherapp.R
 
-@Composable
-fun HomeScreen(onSearchClicked: (String) -> Unit) {
-    WeatherHomeScreen(onSearchButtonClicked = onSearchClicked)
-}
+
 
 
 @Composable
@@ -64,8 +61,6 @@ fun SettingsScreen() {
 @Preview(showBackground = true)
 @Composable
 fun BottomNavigationPreview() {
-    HomeScreen{
 
-    }
 }
 
