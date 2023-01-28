@@ -94,7 +94,9 @@ fun BottomNavigation(navController: NavController) {
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavigationItem.Home.screenRoute) {
         composable(BottomNavigationItem.Home.screenRoute) {
-            HomeScreen()
+            HomeScreen {
+
+            }
         }
         composable(BottomNavigationItem.Map.screenRoute) {
             MapScreen()
