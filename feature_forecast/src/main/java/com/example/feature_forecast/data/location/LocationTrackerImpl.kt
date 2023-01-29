@@ -15,6 +15,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
+import com.example.common_resources.resources.string.WeatherAppStrings
 
 class LocationTrackerImpl @Inject constructor(
     private val locationClient: FusedLocationProviderClient,
@@ -68,7 +69,7 @@ class LocationTrackerImpl @Inject constructor(
                             value = null
                         ) { throwable ->
                             throw LocationException(
-                                message = application.resources.getString(R.string.location_error) +
+                                message = application.resources.getString(WeatherAppStrings.locationError) +
                                         " ${throwable.message}"
                             )
                         }
@@ -76,7 +77,7 @@ class LocationTrackerImpl @Inject constructor(
                     // если всё закрылось
                     addOnCanceledListener {
                         continuation.cancel(
-                            cause = LocationException(application.resources.getString(R.string.location_error_unknown))
+                            cause = LocationException(application.resources.getString(WeatherAppStrings.locationUnknownError))
                         )
                     }
                 }

@@ -9,6 +9,4 @@ enum class BottomNavigationTabs(
     @DrawableRes
     val icon: Int,
     val route: String
-) {
-
-}
+)

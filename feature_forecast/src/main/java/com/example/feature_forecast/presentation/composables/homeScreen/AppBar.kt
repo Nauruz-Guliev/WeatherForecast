@@ -22,6 +22,9 @@ import androidx.compose.ui.unit.sp
 import com.example.feature_forecast.R
 import com.example.weatherapp.theme.ui.Primary
 import com.example.weatherapp.theme.ui.Secondary
+import com.example.common_resources.resources.string.WeatherAppStrings
+import com.example.common_resources.resources.icon.WeatherAppIcons
+
 
 
 @Composable
@@ -95,7 +98,7 @@ private fun SearchButton(onSearchButtonClicked: ((String) -> Unit)?, cityName: S
                 modifier = Modifier
                     .height(40.dp)
                     .width(40.dp),
-                painter = painterResource(id = R.drawable.baseline_search_24),
+                painter = painterResource(id = WeatherAppIcons.Search),
                 contentDescription = "Search",
                 tint = Primary
             )

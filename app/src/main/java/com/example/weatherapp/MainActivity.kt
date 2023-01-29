@@ -23,29 +23,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.weather_forecast.presentation.composables.homeScreen.WeatherHomeScreen
+import com.example.weather_forecast.presentation.composables.homeScreen.createDummyWeatherInfo
+import com.example.weather_forecast.presentation.models.WeatherState
 import com.example.weatherapp.bottomNav.*
 import com.example.weatherapp.theme.WeatherAppTheme
 import com.example.weatherapp.theme.ui.Primary
 import com.example.weatherapp.theme.ui.Secondary
-import com.example.feature_forecast.presentation.composables.homeScreen.WeatherHomeScreen
-import com.example.feature_forecast.presentation.composables.homeScreen.createDummyWeatherInfo
-import com.example.feature_forecast.presentation.models.WeatherState
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherAppTheme {
-                WeatherHomeScreen(
-                    state = WeatherState(
-                        weatherInfo = createDummyWeatherInfo(),
-                        isLoading = false,
-                        error = null
-                    ),
-                    date = "Friday 27,\nJanuary 2023",
-                    onSearchButtonClicked = null,
-                    onSeeMoreClicked = null,
-                )
+                 MainScreenView()
             }
         }
     }
@@ -125,7 +115,16 @@ fun BottomNavigation(navController: NavController) {
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavigationItem.Home.screenRoute) {
         composable(BottomNavigationItem.Home.screenRoute) {
-
+            WeatherHomeScreen(
+                state = WeatherState(
+                    weatherInfo = createDummyWeatherInfo(),
+                    isLoading = false,
+                    error = null
+                ),
+                date = "Friday 27,\nJanuary 2023",
+                onSearchButtonClicked = null,
+                onSeeMoreClicked = null,
+            )
         }
         composable(BottomNavigationItem.Map.screenRoute) {
             MapScreen()
