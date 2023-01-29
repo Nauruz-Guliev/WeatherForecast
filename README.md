@@ -1,7 +1,8 @@
 # WeatherForecast
 
 ## todo by priority
-- ui for each feature (1/4)
+- ui for each feature in compose (1/4)
+- ui for each feature in figma (1/4)
 - navigation(bottom) between modules/features(1/4)
 - geocoder impl(0/1)
 - di impl (1/4)
