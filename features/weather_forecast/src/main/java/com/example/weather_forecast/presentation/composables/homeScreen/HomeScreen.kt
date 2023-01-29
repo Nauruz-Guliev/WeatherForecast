@@ -1,14 +1,13 @@
 package com.example.weather_forecast.presentation.composables.homeScreen
 
+import android.graphics.Paint.Align
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,15 +37,15 @@ fun WeatherHomeScreen(
     onSearchButtonClicked: ((String) -> Unit)?,
     onSeeMoreClicked: ((WeatherInfo) -> Unit)?
 ) {
-    state.weatherInfo?.let {
-        Scaffold(
-            backgroundColor = Primary,
-            modifier = Modifier
-                .fillMaxSize(),
-            topBar = {
-                AppBar(onSearchButtonClicked = onSearchButtonClicked)
-            },
-            content = { innerPadding ->
+    Scaffold(
+        backgroundColor = Primary,
+        modifier = Modifier
+            .fillMaxSize(),
+        topBar = {
+            AppBar(onSearchButtonClicked = onSearchButtonClicked)
+        },
+        content = { innerPadding ->
+            if (state.weatherInfo != null) {
                 Box(modifier = Modifier.padding(innerPadding)) {
                     WeatherInfoArea(
                         date = date,
@@ -54,10 +53,28 @@ fun WeatherHomeScreen(
                         onSeeMoreClicked
                     )
                 }
-            },
-        )
-    }
+            } else if (state.error != null) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    Text(
+                        text = state.error,
+                        color = Color.Red,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+            } else if (state.isLoading) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+            }
+        },
+    )
 }
+
+
+
 
 @Composable
 private fun WeatherInfoArea(
