@@ -20,9 +20,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.common.resources.resources.icon.WeatherAppIcons
-import com.example.common.resources.theme.ui.Primary
-import com.example.common.resources.theme.ui.Secondary
+import com.example.common.icon.WeatherAppIcons
+import com.example.common.theme.ui.Primary
+import com.example.common.theme.ui.Secondary
 
 
 @Composable

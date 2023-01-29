@@ -1,4 +1,4 @@
-package com.example.common.resources.resources.icon
+package com.example.common.icon
 
 import com.example.common.R
 

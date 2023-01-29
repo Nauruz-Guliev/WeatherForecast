@@ -15,7 +15,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
-import com.example.common.resources.resources.string.WeatherAppStrings
+import com.example.common.string.WeatherAppStrings
 
 
 class LocationTrackerImpl @Inject constructor(
@@ -78,7 +78,8 @@ class LocationTrackerImpl @Inject constructor(
                     // если всё закрылось
                     addOnCanceledListener {
                         continuation.cancel(
-                            cause = LocationException(application.resources.getString(WeatherAppStrings.locationUnknownError))
+                            cause = LocationException(application.resources.getString(
+                                WeatherAppStrings.locationUnknownError))
                         )
                     }
                 }
