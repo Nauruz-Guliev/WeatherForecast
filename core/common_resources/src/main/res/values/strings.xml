@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="error">Unknown error</string>
+    <string name="location_error">Unable to get your location due to:</string>
+    <string name="location_error_unknown">Location is unavailable</string>
+    <string name="title_feature_forecast">Forecast</string>
+    <string name="title_feature_map">Map</string>
+    <string name="title_feature_settings">Settings</string>
+    <string name="title_feature_search_history">Search History</string>
+    <string name="title_common_resources">Common Design Module</string>
+
+</resources>
