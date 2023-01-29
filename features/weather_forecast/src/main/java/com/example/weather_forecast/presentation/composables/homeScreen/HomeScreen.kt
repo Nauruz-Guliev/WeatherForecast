@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+
 @Composable
 fun WeatherHomeScreen(
     state: WeatherState,
@@ -37,23 +38,25 @@ fun WeatherHomeScreen(
     onSearchButtonClicked: ((String) -> Unit)?,
     onSeeMoreClicked: ((WeatherInfo) -> Unit)?
 ) {
-    Scaffold(
-        backgroundColor = Primary,
-        modifier = Modifier
-            .fillMaxSize(),
-        topBar = {
-            AppBar(onSearchButtonClicked = onSearchButtonClicked)
-        },
-        content = { innerPadding ->
-            Box(modifier = Modifier.padding(innerPadding)) {
-                WeatherInfoArea(
-                    date = date,
-                    weatherInfo = state.weatherInfo!!,
-                    onSeeMoreClicked
-                )
-            }
-        },
-    )
+    state.weatherInfo?.let {
+        Scaffold(
+            backgroundColor = Primary,
+            modifier = Modifier
+                .fillMaxSize(),
+            topBar = {
+                AppBar(onSearchButtonClicked = onSearchButtonClicked)
+            },
+            content = { innerPadding ->
+                Box(modifier = Modifier.padding(innerPadding)) {
+                    WeatherInfoArea(
+                        date = date,
+                        weatherInfo = state.weatherInfo,
+                        onSeeMoreClicked
+                    )
+                }
+            },
+        )
+    }
 }
 
 @Composable

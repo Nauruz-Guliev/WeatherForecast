@@ -27,15 +27,6 @@ class LocationTrackerImpl @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun getCurrentLocation(): Location? {
 
-
-        val locationManager = application.getSystemService(LOCATION_SERVICE) as LocationManager
-
-        val isGpsEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ||
-                locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        if (!isGpsEnabled) {
-            return null
-        }
-
         return suspendCancellableCoroutine { continuation ->
             if (ActivityCompat.checkSelfPermission(
                     application,

@@ -25,6 +25,7 @@ import com.example.common.theme.ui.Primary
 import com.example.common.theme.ui.Secondary
 
 
+
 @Composable
 fun AppBar(onSearchButtonClicked: ((String) -> Unit)?) {
     var input by rememberSaveable { mutableStateOf("") }
@@ -110,7 +111,5 @@ private fun SearchButton(onSearchButtonClicked: ((String) -> Unit)?, cityName: S
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-    AppBar {
 
-    }
 }
