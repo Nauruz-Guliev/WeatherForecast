@@ -33,7 +33,7 @@ import java.util.*
 @Composable
 fun WeatherHomeScreen(
     state: WeatherState,
-    date: String,
+    date: Long,
     onSearchButtonClicked: ((String) -> Unit)?,
     onSeeMoreClicked: ((WeatherInfo) -> Unit)?
 ) {
@@ -48,7 +48,10 @@ fun WeatherHomeScreen(
             if (state.weatherInfo != null) {
                 Box(modifier = Modifier.padding(innerPadding)) {
                     WeatherInfoArea(
-                        date = date,
+                        date = SimpleDateFormat(
+                            "EEEE, dd \nMMMM yyyy",
+                            Locale.US
+                        ).format(state.weatherInfo[0].day),
                         weatherInfo = state.weatherInfo,
                         onSeeMoreClicked
                     )
@@ -368,7 +371,7 @@ fun PreviewWindow() {
     val state = WeatherState(isLoading = false, weatherInfo = createDummyWeatherInfo())
     WeatherHomeScreen(
         state = state,
-        date = "Friday 27,\nJanuary 2023",
+        date = System.currentTimeMillis(),
         onSearchButtonClicked = null,
         onSeeMoreClicked = null,
     )
