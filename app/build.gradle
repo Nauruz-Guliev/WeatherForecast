@@ -100,5 +100,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
 
     implementation project(":features:weather_forecast")
+    implementation project(":features:city_search_history")
 
 }

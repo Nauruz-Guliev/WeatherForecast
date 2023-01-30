@@ -27,15 +27,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         launcher.launch(
             arrayOf(
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 android.Manifest.permission.ACCESS_COARSE_LOCATION,
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
         )
         setContent {
             WeatherAppTheme {
-                File(cacheDir, "tfs.txt").createNewFile()
                 MainScreenView(
                     weatherViewModel = weatherViewModel,
                     onSearchButtonClicked = ::onSearchButtonClicked
@@ -45,11 +42,6 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun onSearchButtonClicked(cityName: String) {
-        val state = weatherViewModel.state
         weatherViewModel.loadWeatherForSpecifiedCity(cityName)
-        Log.d(
-            "RESULT",
-            state.weatherInfo.toString() + " " + cityName + " " + state.error + " " + state.isLoading
-        )
     }
 }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.city_search_history.presentation.SearchHistoryScreen
 import com.example.weather_forecast.presentation.composables.homeScreen.WeatherHomeScreen
 import com.example.weather_forecast.presentation.viewmodels.WeatherViewModel
 import com.example.weatherapp.bottomNav.BottomNavigationItem
@@ -34,6 +35,10 @@ fun NavigationGraph(
         }
         composable(BottomNavigationItem.Settings.screenRoute) {
             SettingsScreen()
+        }
+
+        composable(BottomNavigationItem.SearchHistory.screenRoute) {
+            SearchHistoryScreen()
         }
     }
 }

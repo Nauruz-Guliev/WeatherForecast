@@ -6,12 +6,15 @@ import com.example.city_search_history.data.WeatherHistoryDatabase
 import com.example.city_search_history.data.dao.WeatherForecastDao
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 private const val DB_NAME = "WEATHER_DATABASE"
 
 @Module
+@InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
     @Singleton
