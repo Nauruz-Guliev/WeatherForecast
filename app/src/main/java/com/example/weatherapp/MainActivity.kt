@@ -10,6 +10,7 @@ import com.example.weather_forecast.presentation.viewmodels.WeatherViewModel
 import com.example.weatherapp.mainscreen.MainScreenView
 import com.example.weatherapp.theme.WeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -26,12 +27,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         launcher.launch(
             arrayOf(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
         )
         setContent {
             WeatherAppTheme {
+                File(cacheDir, "tfs.txt").createNewFile()
                 MainScreenView(
                     weatherViewModel = weatherViewModel,
                     onSearchButtonClicked = ::onSearchButtonClicked

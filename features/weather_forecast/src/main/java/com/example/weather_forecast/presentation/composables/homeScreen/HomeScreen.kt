@@ -49,8 +49,8 @@ fun WeatherHomeScreen(
                 Box(modifier = Modifier.padding(innerPadding)) {
                     WeatherInfoArea(
                         date = SimpleDateFormat(
-                            "EEEE, dd \nMMMM yyyy",
-                            Locale.US
+                            "EEEE, dd \nMMMM",
+                            Locale.getDefault()
                         ).format(state.weatherInfo[0].day),
                         weatherInfo = state.weatherInfo,
                         onSeeMoreClicked
