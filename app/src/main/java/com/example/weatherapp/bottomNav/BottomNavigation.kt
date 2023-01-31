@@ -28,52 +28,12 @@ import com.example.weatherapp.theme.ui.Secondary
 
 
 @Composable
-fun MapScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.white))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Map screen",
-            fontWeight = FontWeight.Bold,
-            fontSize = 24.sp,
-            textAlign = TextAlign.Center,
-            color = Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-    }
-}
-
-
-@Composable
-fun SettingsScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.teal_700))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Settings screen",
-            fontWeight = FontWeight.Bold,
-            fontSize = 24.sp,
-            textAlign = TextAlign.Center,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-    }
-}
-
-
-@Composable
 fun BottomNavigation(navController: NavController) {
     val items = listOf(
         BottomNavigationItem.Home,
+        BottomNavigationItem.SearchHistory,
         BottomNavigationItem.Map,
         BottomNavigationItem.Settings,
-
         )
     Surface() {
         Box(

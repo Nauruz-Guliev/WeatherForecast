@@ -6,11 +6,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.city_search_history.presentation.SearchHistoryScreen
+import com.example.map.presentation.MapScreen
+import com.example.settings.presentation.SettingsScreen
 import com.example.weather_forecast.presentation.composables.homeScreen.WeatherHomeScreen
 import com.example.weather_forecast.presentation.viewmodels.WeatherViewModel
 import com.example.weatherapp.bottomNav.BottomNavigationItem
-import com.example.weatherapp.bottomNav.MapScreen
-import com.example.weatherapp.bottomNav.SettingsScreen
 import java.sql.Time
 
 @Composable
@@ -30,6 +30,9 @@ fun NavigationGraph(
                 onSeeMoreClicked = null,
             )
         }
+        composable(BottomNavigationItem.SearchHistory.screenRoute) {
+            SearchHistoryScreen()
+        }
         composable(BottomNavigationItem.Map.screenRoute) {
             MapScreen()
         }
@@ -37,8 +40,5 @@ fun NavigationGraph(
             SettingsScreen()
         }
 
-        composable(BottomNavigationItem.SearchHistory.screenRoute) {
-            SearchHistoryScreen()
-        }
     }
 }
