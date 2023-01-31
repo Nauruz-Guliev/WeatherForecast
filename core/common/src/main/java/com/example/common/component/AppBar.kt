@@ -1,5 +1,4 @@
-package com.example.weather_forecast.presentation.composables.homeScreen
-
+package com.example.common.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -23,7 +22,6 @@ import androidx.compose.ui.unit.sp
 import com.example.common.icon.WeatherAppIcons
 import com.example.common.theme.ui.Primary
 import com.example.common.theme.ui.Secondary
-
 
 
 @Composable

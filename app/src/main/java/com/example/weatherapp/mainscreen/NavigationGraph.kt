@@ -22,7 +22,6 @@ fun NavigationGraph(
     //todo fix date, currently taking first from the list
     NavHost(navController, startDestination = BottomNavigationItem.Home.screenRoute) {
         composable(BottomNavigationItem.Home.screenRoute) {
-            Log.d("RESULT_FROM_API", weatherViewModel.state.weatherInfo.toString())
             WeatherHomeScreen(
                 state = weatherViewModel.state,
                 date = weatherViewModel.state.weatherInfo?.get(0)?.day ?: System.currentTimeMillis(),
