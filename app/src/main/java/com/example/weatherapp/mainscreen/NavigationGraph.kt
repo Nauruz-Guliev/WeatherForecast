@@ -1,6 +1,5 @@
 package com.example.weatherapp.mainscreen
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -11,7 +10,6 @@ import com.example.settings.presentation.SettingsScreen
 import com.example.weather_forecast.presentation.composables.homeScreen.WeatherHomeScreen
 import com.example.weather_forecast.presentation.viewmodels.WeatherViewModel
 import com.example.weatherapp.bottomNav.BottomNavigationItem
-import java.sql.Time
 
 @Composable
 fun NavigationGraph(
@@ -30,7 +28,7 @@ fun NavigationGraph(
             )
         }
         composable(BottomNavigationItem.SearchHistory.screenRoute) {
-            SearchHistoryScreen()
+            SearchHistoryScreen(onSearchButtonClicked)
         }
         composable(BottomNavigationItem.Map.screenRoute) {
             MapScreen()

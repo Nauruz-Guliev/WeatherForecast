@@ -1,4 +1,6 @@
-package com.example.weather_forecast.domain
+package com.example.common.models
+
+import java.util.*
 
 data class WeatherInfo(
     val cityName: String,
@@ -12,5 +14,6 @@ data class WeatherInfo(
     val windSpeed: Double,
     val pressure: Long,
     val sunrise: Long,
-    val sunset: Long
+    val sunset: Long,
+    val searchDate: Date? = null
 )

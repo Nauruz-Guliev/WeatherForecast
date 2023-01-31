@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weather_forecast.domain.WeatherInfo
+import com.example.common.models.WeatherInfo
 import com.example.weather_forecast.domain.location.LocationTracker
 import com.example.weather_forecast.domain.repository.WeatherRepository
 import com.example.weather_forecast.domain.utils.Status

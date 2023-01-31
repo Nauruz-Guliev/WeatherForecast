@@ -2,7 +2,6 @@ package com.example.weather_forecast.data.repository
 
 import com.example.weather_forecast.data.mappers.WeatherMapper
 import com.example.weather_forecast.data.remote.WeatherApi
-import com.example.weather_forecast.domain.WeatherInfo
 import com.example.weather_forecast.domain.repository.WeatherRepository
 import com.example.weather_forecast.domain.utils.Status
 import javax.inject.Inject

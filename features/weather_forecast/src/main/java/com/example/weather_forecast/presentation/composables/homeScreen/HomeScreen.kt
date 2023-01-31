@@ -1,6 +1,5 @@
 package com.example.weather_forecast.presentation.composables.homeScreen
 
-import android.graphics.Paint.Align
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 
@@ -18,10 +17,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.common.component.AppBar
+import com.example.common.models.WeatherInfo
 import com.example.common.theme.ui.FontColor
 import com.example.common.theme.ui.Primary
 import com.example.common.theme.ui.Secondary
-import com.example.weather_forecast.domain.WeatherInfo
 import com.example.weather_forecast.presentation.models.WeatherState
 
 

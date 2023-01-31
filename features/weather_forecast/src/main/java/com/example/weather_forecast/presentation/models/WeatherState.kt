@@ -1,6 +1,6 @@
 package com.example.weather_forecast.presentation.models
 
-import com.example.weather_forecast.domain.WeatherInfo
+import com.example.common.models.WeatherInfo
 
 data class WeatherState(
     val weatherInfo: List<WeatherInfo>? = null,

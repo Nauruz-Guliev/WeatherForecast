@@ -1,6 +1,6 @@
 package com.example.weather_forecast.domain.repository
 
-import com.example.weather_forecast.domain.WeatherInfo
+import com.example.common.models.WeatherInfo
 import com.example.weather_forecast.domain.utils.Status
 
 interface WeatherRepository {

@@ -1,7 +1,6 @@
 package com.example.weather_forecast.data.mappers
 
 import com.example.weather_forecast.data.remote.dto.ForecastResponse
-import com.example.weather_forecast.domain.WeatherInfo
 
 object WeatherMapper {
 
