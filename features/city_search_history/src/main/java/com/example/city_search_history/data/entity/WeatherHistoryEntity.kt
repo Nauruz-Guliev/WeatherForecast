@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "weather_forecast")
-class WeatherForecastEntity(
+class WeatherHistoryEntity(
     @PrimaryKey
     val id: Int? = null,
     @ColumnInfo(name = "city_name")
@@ -17,16 +17,9 @@ class WeatherForecastEntity(
     // todo create another table for icons (o2m)
     @ColumnInfo(name = "icon_id")
     val iconId: String,
-    @ColumnInfo(name = "temperature_morning")
-    val temperatureMorning: Double,
-    @ColumnInfo(name = "temperature_day")
-    val temperatureDay: Double,
-    @ColumnInfo(name = "temperature_evening")
-    val temperatureEvening: Double,
-    val humidity: Long,
-    @ColumnInfo(name = "wind_speed")
-    val windSpeed: Double,
-    val pressure: Long,
+    // temperature-day will be taken as default
+    val temperature: Double,
+
     val sunrise: Long,
     val sunset: Long,
 

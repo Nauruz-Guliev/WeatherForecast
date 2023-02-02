@@ -13,8 +13,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.common.component.AppBar
-import com.example.common.models.WeatherInfo
+import com.example.common.components.AppBar
+import com.example.common.models.WeatherInfoModel
 import com.example.common.theme.ui.Primary
 import com.google.accompanist.insets.ui.Scaffold
 import java.text.SimpleDateFormat
@@ -35,7 +35,7 @@ fun SearchHistoryScreen(onSearchButtonClicked: ((String) -> Unit)) {
                     items(
                         createDummyWeatherInfo()
                     ) { data ->
-                        WeatherInfoItem(weatherInfo = data)
+                        WeatherInfoItem(weatherInfoModel = data)
                     }
                 }
             }
@@ -45,7 +45,7 @@ fun SearchHistoryScreen(onSearchButtonClicked: ((String) -> Unit)) {
 }
 
 @Composable
-fun WeatherInfoItem(weatherInfo: WeatherInfo) {
+fun WeatherInfoItem(weatherInfoModel: WeatherInfoModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -61,16 +61,16 @@ fun WeatherInfoItem(weatherInfo: WeatherInfo) {
         Row() {
             Column(modifier = Modifier.padding(16.dp).weight(1.0f)) {
                 Text(
-                    text = weatherInfo.cityName,
+                    text = weatherInfoModel.cityName,
                     fontSize = 20.sp
                 )
                 Text(
-                    text = SimpleDateFormat("dd MMMM", Locale.US).format(weatherInfo.day)
+                    text = SimpleDateFormat("dd MMMM", Locale.US).format(weatherInfoModel.day)
                 )
             }
             Column(modifier = Modifier.align(Alignment.CenterVertically).padding(16.dp)) {
                 Text(
-                    text = weatherInfo.temperatureDay.toString(),
+                    text = weatherInfoModel.temperatureDay.toString(),
                     fontSize = 24.sp
                 )
             }
@@ -85,11 +85,11 @@ fun PreviewWindow() {
     SearchHistoryScreen(onSearchButtonClicked = ::clicked)
 }
 
-private fun createDummyWeatherInfo(): List<WeatherInfo> {
-    val list = mutableListOf<WeatherInfo>()
+private fun createDummyWeatherInfo(): List<WeatherInfoModel> {
+    val list = mutableListOf<WeatherInfoModel>()
     for (i in 0 until 7) {
         list.add(
-            WeatherInfo(
+            WeatherInfoModel(
                 cityName = "Russia, Kazan",
                 day = "1674${i}92089610".toLong(),
                 weatherDescription = "Sunny",
@@ -104,6 +104,7 @@ private fun createDummyWeatherInfo(): List<WeatherInfo> {
                 pressure = 12,
                 sunset = "167492${(0..10).random()}214117".toLong(),
                 sunrise = "167492${(0..10).random()}083690".toLong(),
+                searchDate = Calendar.getInstance().time
             )
         )
     }

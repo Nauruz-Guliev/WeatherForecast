@@ -1,4 +1,4 @@
-package com.example.common.string
+package com.example.common.strings
 
 import com.example.common.R
 

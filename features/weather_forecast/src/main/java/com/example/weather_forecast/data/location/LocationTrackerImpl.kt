@@ -2,10 +2,8 @@ package com.example.weather_forecast.data.location
 
 import android.Manifest
 import android.app.Application
-import android.content.Context.LOCATION_SERVICE
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.weather_forecast.data.exceptions.LocationException
@@ -15,7 +13,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
-import com.example.common.string.WeatherAppStrings
+import com.example.common.strings.WeatherAppStrings
 
 
 class LocationTrackerImpl @Inject constructor(

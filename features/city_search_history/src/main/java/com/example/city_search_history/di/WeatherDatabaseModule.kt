@@ -3,19 +3,20 @@ package com.example.city_search_history.di
 import android.content.Context
 import androidx.room.Room
 import com.example.city_search_history.data.WeatherHistoryDatabase
-import com.example.city_search_history.data.dao.WeatherForecastDao
+import com.example.city_search_history.data.dao.WeatherHistoryDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 private const val DB_NAME = "WEATHER_DATABASE"
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DatabaseModule {
+class WeatherDatabaseModule {
 
     @Singleton
     @Provides
@@ -29,7 +30,11 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideWeatherForecastDao(weatherHistoryDatabase: WeatherHistoryDatabase): WeatherForecastDao {
+    fun provideWeatherForecastDao(weatherHistoryDatabase: WeatherHistoryDatabase): WeatherHistoryDao {
         return weatherHistoryDatabase.weatherForecastDao()
     }
+
+    @Singleton
+    @Provides
+    fun provideDispatcher() = Dispatchers.IO
 }

@@ -22,7 +22,7 @@ fun NavigationGraph(
         composable(BottomNavigationItem.Home.screenRoute) {
             WeatherHomeScreen(
                 state = weatherViewModel.state,
-                date = weatherViewModel.state.weatherInfo?.get(0)?.day ?: System.currentTimeMillis(),
+                date = weatherViewModel.state.weatherInfoModel?.get(0)?.day ?: System.currentTimeMillis(),
                 onSearchButtonClicked = onSearchButtonClicked,
                 onSeeMoreClicked = null,
             )

@@ -4,15 +4,16 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.city_search_history.data.entity.WeatherForecastEntity
+import com.example.city_search_history.data.entity.WeatherHistoryEntity
 import kotlinx.coroutines.flow.Flow
 
 
 @Dao
-interface WeatherForecastDao {
+interface WeatherHistoryDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(forecast: WeatherForecastEntity)
+    fun insert(forecast: WeatherHistoryEntity)
 
     @Query("SELECT * FROM weather_forecast")
-    fun getAll() : Flow<List<WeatherForecastEntity>>
+    fun getAll() : Flow<List<WeatherHistoryEntity>>
+
 }

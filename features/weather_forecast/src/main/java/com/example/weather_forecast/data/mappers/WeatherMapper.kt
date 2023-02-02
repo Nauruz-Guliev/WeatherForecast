@@ -1,29 +1,34 @@
 package com.example.weather_forecast.data.mappers
 
+import com.example.common.mappers.GeneralMapper
+import com.example.common.models.WeatherInfoModel
 import com.example.weather_forecast.data.remote.dto.ForecastResponse
+import java.util.*
 
-object WeatherMapper {
+object WeatherMapper : GeneralMapper<ForecastResponse, List<WeatherInfoModel>> {
 
-    //todo write cleaner
-    fun weatherDtoToListOfWeatherInfo(response: ForecastResponse): List<WeatherInfo> {
-        val weatherInfoList = mutableListOf<WeatherInfo>()
-        for (i in 0 until response.cnt) {
-            val singleDayForecast = WeatherInfo(
-                cityName = response.city.name,
-                day = response.list[i].dt,
-                weatherDescription = response.list[i].weather[0].description,
-                iconId = response.list[i].weather[0].icon,
-                temperatureMorning = response.list[i].temp.morn,
-                temperatureDay = response.list[i].temp.day,
-                temperatureEvening = response.list[i].temp.eve,
-                humidity = response.list[i].humidity,
-                windSpeed = response.list[i].speed,
-                pressure = response.list[i].pressure,
-                sunrise = response.list[i].sunrise,
-                sunset = response.list[i].sunset
+    override fun toModel(model: ForecastResponse): List<WeatherInfoModel> {
+        val weatherInfoModelList = mutableListOf<WeatherInfoModel>()
+        for (i in 0 until model.cnt) {
+            val singleDayForecast = WeatherInfoModel(
+                cityName = model.city.name,
+                day = model.list[i].dt,
+                weatherDescription = model.list[i].weather[0].description,
+                iconId = model.list[i].weather[0].icon,
+                temperatureMorning = model.list[i].temp.morn,
+                temperatureDay = model.list[i].temp.day,
+                temperatureEvening = model.list[i].temp.eve,
+                humidity = model.list[i].humidity,
+                windSpeed = model.list[i].speed,
+                pressure = model.list[i].pressure,
+                sunrise = model.list[i].sunrise,
+                sunset = model.list[i].sunset,
+                searchDate = Calendar.getInstance().time
             )
-            weatherInfoList.add(singleDayForecast)
+            weatherInfoModelList.add(singleDayForecast)
         }
-        return weatherInfoList
+        return weatherInfoModelList
     }
+
+    override fun fromModel(model: List<WeatherInfoModel>) = null
 }

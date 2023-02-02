@@ -1,24 +1,25 @@
 package com.example.weather_forecast.data.repository
 
+import com.example.common.models.WeatherInfoModel
+import com.example.common.utility.GeneralWeatherState
 import com.example.weather_forecast.data.mappers.WeatherMapper
 import com.example.weather_forecast.data.remote.WeatherApi
 import com.example.weather_forecast.domain.repository.WeatherRepository
-import com.example.weather_forecast.domain.utils.Status
 import javax.inject.Inject
 
 class WeatherRepositoryImpl @Inject constructor(
     private val api: WeatherApi
 ) : WeatherRepository {
-    override suspend fun getWeeklyCityWeatherInfo(city: String): Status<List<WeatherInfo>> {
+    override suspend fun getWeeklyCityWeatherInfo(city: String): GeneralWeatherState<List<WeatherInfoModel>> {
         return try {
-            Status.Success(
+            GeneralWeatherState.Success(
                 data = WeatherMapper
-                    .weatherDtoToListOfWeatherInfo(
-                        response = api.getForecastByCityName(city)
+                    .toModel(
+                        model = api.getForecastByCityName(city)
                     )
             )
         } catch (e: Exception) {
-            Status.Error(
+            GeneralWeatherState.Error(
                 message = e.message ?: "Unknown error",
                 data = null
             )
@@ -28,19 +29,19 @@ class WeatherRepositoryImpl @Inject constructor(
     override suspend fun getWeeklyCityWeatherInfo(
         lat: Double,
         lon: Double
-    ): Status<List<WeatherInfo>> {
+    ): GeneralWeatherState<List<WeatherInfoModel>> {
         return try {
-            Status.Success(
+            GeneralWeatherState.Success(
                 data = WeatherMapper
-                    .weatherDtoToListOfWeatherInfo(
-                        response = api.getForecastByCityCoordinates(
+                    .toModel(
+                        model = api.getForecastByCityCoordinates(
                             long = lon,
                             lat = lat,
                         )
                     )
             )
         } catch (e: Exception) {
-            Status.Error(
+            GeneralWeatherState.Error(
                 message = e.message ?: "Unknown error",
                 data = null
             )

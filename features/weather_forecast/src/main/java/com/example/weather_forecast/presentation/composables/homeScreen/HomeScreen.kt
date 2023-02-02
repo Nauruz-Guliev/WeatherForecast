@@ -16,8 +16,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.common.component.AppBar
-import com.example.common.models.WeatherInfo
+import com.example.common.components.AppBar
+import com.example.common.models.WeatherInfoModel
 import com.example.common.theme.ui.FontColor
 import com.example.common.theme.ui.Primary
 import com.example.common.theme.ui.Secondary
@@ -35,7 +35,7 @@ fun WeatherHomeScreen(
     state: WeatherState,
     date: Long,
     onSearchButtonClicked: ((String) -> Unit)?,
-    onSeeMoreClicked: ((WeatherInfo) -> Unit)?
+    onSeeMoreClicked: ((WeatherInfoModel) -> Unit)?
 ) {
     Scaffold(
         backgroundColor = Primary,
@@ -45,14 +45,14 @@ fun WeatherHomeScreen(
             AppBar(onSearchButtonClicked = onSearchButtonClicked)
         },
         content = { innerPadding ->
-            if (state.weatherInfo != null) {
+            if (state.weatherInfoModel != null) {
                 Box(modifier = Modifier.padding(innerPadding)) {
                     WeatherInfoArea(
                         date = SimpleDateFormat(
                             "EEEE, dd \nMMMM",
                             Locale.getDefault()
-                        ).format(state.weatherInfo[0].day),
-                        weatherInfo = state.weatherInfo,
+                        ).format(state.weatherInfoModel[0].day),
+                        weatherInfoModel = state.weatherInfoModel,
                         onSeeMoreClicked
                     )
                 }
@@ -82,8 +82,8 @@ fun WeatherHomeScreen(
 @Composable
 private fun WeatherInfoArea(
     date: String,
-    weatherInfo: List<WeatherInfo>,
-    onSeeMoreClicked: ((WeatherInfo) -> Unit)?
+    weatherInfoModel: List<WeatherInfoModel>,
+    onSeeMoreClicked: ((WeatherInfoModel) -> Unit)?
 ) {
     Column(
         modifier = Modifier
@@ -91,31 +91,31 @@ private fun WeatherInfoArea(
             .background(Primary)
     ) {
         DateSection(date = date)
-        TemperatureSection(weatherInfo = weatherInfo[0])
-        SunAppearanceSection(weatherInfo = weatherInfo[0])
-        SecondaryWeatherInfoSection(weatherInfo = weatherInfo[0])
-        DetailsButtonSection(onSeeMoreClicked = onSeeMoreClicked, weatherInfo = weatherInfo[0])
-        WeatherWeeklyList(weatherInfoItems = weatherInfo)
+        TemperatureSection(weatherInfoModel = weatherInfoModel[0])
+        SunAppearanceSection(weatherInfoModel = weatherInfoModel[0])
+        SecondaryWeatherInfoSection(weatherInfoModel = weatherInfoModel[0])
+        DetailsButtonSection(onSeeMoreClicked = onSeeMoreClicked, weatherInfoModel = weatherInfoModel[0])
+        WeatherWeeklyList(weatherInfoModelItems = weatherInfoModel)
     }
 }
 
 @Composable
-private fun WeatherWeeklyList(weatherInfoItems: List<WeatherInfo>) {
+private fun WeatherWeeklyList(weatherInfoModelItems: List<WeatherInfoModel>) {
     LazyRow(
         modifier = Modifier.padding(
             paddingValues = PaddingValues(top = 24.dp)
         )
     ) {
         items(
-            weatherInfoItems
+            weatherInfoModelItems
         ) { data ->
-            WeatherInfoItem(weatherInfo = data)
+            WeatherInfoItem(weatherInfoModel = data)
         }
     }
 }
 
 @Composable
-private fun WeatherInfoItem(weatherInfo: WeatherInfo) {
+private fun WeatherInfoItem(weatherInfoModel: WeatherInfoModel) {
     Card(
         backgroundColor = Primary,
         modifier = Modifier
@@ -138,7 +138,7 @@ private fun WeatherInfoItem(weatherInfo: WeatherInfo) {
                 text = SimpleDateFormat(
                     "EEEE",
                     Locale.US
-                ).format(weatherInfo.day),
+                ).format(weatherInfoModel.day),
                 textAlign = TextAlign.Center
             )
             Box(
@@ -160,7 +160,7 @@ private fun WeatherInfoItem(weatherInfo: WeatherInfo) {
                         )
                     )
                     .fillMaxWidth(),
-                text = weatherInfo.temperatureDay.toString() + "℃",
+                text = weatherInfoModel.temperatureDay.toString() + "℃",
                 textAlign = TextAlign.Center
             )
         }
@@ -170,15 +170,15 @@ private fun WeatherInfoItem(weatherInfo: WeatherInfo) {
 
 @Composable
 private fun DetailsButtonSection(
-    onSeeMoreClicked: ((WeatherInfo) -> Unit)?,
-    weatherInfo: WeatherInfo
+    onSeeMoreClicked: ((WeatherInfoModel) -> Unit)?,
+    weatherInfoModel: WeatherInfoModel
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.End
     ) {
         TextButton(
-            onClick = { onSeeMoreClicked?.invoke(weatherInfo) },
+            onClick = { onSeeMoreClicked?.invoke(weatherInfoModel) },
             contentPadding = PaddingValues(0.dp),
             modifier = Modifier
                 .padding(
@@ -210,7 +210,7 @@ private fun DetailsButtonSection(
 
 
 @Composable
-private fun SecondaryWeatherInfoSection(weatherInfo: WeatherInfo) {
+private fun SecondaryWeatherInfoSection(weatherInfoModel: WeatherInfoModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -224,17 +224,17 @@ private fun SecondaryWeatherInfoSection(weatherInfo: WeatherInfo) {
             .weight(1.0f)
             .height(48.dp)
         SecondaryWeatherInfoColumn(
-            primaryText = weatherInfo.windSpeed.toString() + "km/h",
+            primaryText = weatherInfoModel.windSpeed.toString() + "km/h",
             secondaryText = "Wind",
             modifier = columnCommonModifier
         )
         SecondaryWeatherInfoColumn(
-            primaryText = weatherInfo.humidity.toString() + "%",
+            primaryText = weatherInfoModel.humidity.toString() + "%",
             secondaryText = "Humidity",
             modifier = columnCommonModifier
         )
         SecondaryWeatherInfoColumn(
-            primaryText = weatherInfo.temperatureEvening.toString() + "℃",
+            primaryText = weatherInfoModel.temperatureEvening.toString() + "℃",
             secondaryText = "Feels like",
             modifier = columnCommonModifier
         )
@@ -267,7 +267,7 @@ private fun SecondaryWeatherInfoColumn(
 }
 
 @Composable
-private fun SunAppearanceSection(weatherInfo: WeatherInfo) {
+private fun SunAppearanceSection(weatherInfoModel: WeatherInfoModel) {
     Row(
         Modifier
             .height(IntrinsicSize.Min)
@@ -285,7 +285,7 @@ private fun SunAppearanceSection(weatherInfo: WeatherInfo) {
             text = "sunrise: " + SimpleDateFormat(
                 "hh:mm:ss",
                 Locale.US
-            ).format(weatherInfo.sunrise),
+            ).format(weatherInfoModel.sunrise),
             textAlign = TextAlign.Center,
             color = FontColor
         )
@@ -299,7 +299,7 @@ private fun SunAppearanceSection(weatherInfo: WeatherInfo) {
 
         Text(
             modifier = Modifier.weight(1.0f),
-            text = "sunset: " + SimpleDateFormat("hh:mm:ss", Locale.US).format(weatherInfo.sunset),
+            text = "sunset: " + SimpleDateFormat("hh:mm:ss", Locale.US).format(weatherInfoModel.sunset),
             textAlign = TextAlign.Center,
             color = FontColor
         )
@@ -326,7 +326,7 @@ private fun DateSection(date: String) {
 }
 
 @Composable
-private fun TemperatureSection(weatherInfo: WeatherInfo) {
+private fun TemperatureSection(weatherInfoModel: WeatherInfoModel) {
     Row(modifier = Modifier.fillMaxWidth()) {
         Box(
             modifier = Modifier
@@ -352,12 +352,12 @@ private fun TemperatureSection(weatherInfo: WeatherInfo) {
 
             ) {
             Text(
-                text = weatherInfo.temperatureDay.toString() + "℃",
+                text = weatherInfoModel.temperatureDay.toString() + "℃",
                 fontSize = 48.sp,
                 color = FontColor
             )
             Text(
-                text = weatherInfo.cityName,
+                text = weatherInfoModel.cityName,
                 fontSize = 20.sp,
                 color = FontColor
             )
@@ -368,7 +368,7 @@ private fun TemperatureSection(weatherInfo: WeatherInfo) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewWindow() {
-    val state = WeatherState(isLoading = false, weatherInfo = createDummyWeatherInfo())
+    val state = WeatherState(isLoading = false, weatherInfoModel = createDummyWeatherInfo())
     WeatherHomeScreen(
         state = state,
         date = System.currentTimeMillis(),
@@ -377,11 +377,11 @@ fun PreviewWindow() {
     )
 }
 
-fun createDummyWeatherInfo(): List<WeatherInfo> {
-    val list = mutableListOf<WeatherInfo>()
+fun createDummyWeatherInfo(): List<WeatherInfoModel> {
+    val list = mutableListOf<WeatherInfoModel>()
     for (i in 0 until 7) {
         list.add(
-            WeatherInfo(
+            WeatherInfoModel(
                 cityName = "Russia, Kazan",
                 day = "1674${i}92089610".toLong(),
                 weatherDescription = "Sunny",

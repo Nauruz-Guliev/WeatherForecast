@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.common.models.WeatherInfo
+import com.example.common.models.WeatherInfoModel
 import com.example.weather_forecast.domain.location.LocationTracker
 import com.example.weather_forecast.domain.repository.WeatherRepository
-import com.example.weather_forecast.domain.utils.Status
+import com.example.common.utility.GeneralWeatherState
 import com.example.weather_forecast.presentation.models.WeatherState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -33,8 +33,8 @@ class WeatherViewModel @Inject constructor(
                     lon = location.longitude,
                     lat = location.latitude,
                 )) {
-                    is Status.Success -> setStateSuccess(result.data)
-                    is Status.Error -> setStateError(result.message)
+                    is GeneralWeatherState.Success -> setStateSuccess(result.data)
+                    is GeneralWeatherState.Error -> setStateError(result.message)
                 }
             }
         }
@@ -44,15 +44,15 @@ class WeatherViewModel @Inject constructor(
         viewModelScope.launch {
             state = state.copy(isLoading = true, error = null)
             when (val result = repository.getWeeklyCityWeatherInfo(cityName)) {
-                is Status.Success -> setStateSuccess(result.data)
-                is Status.Error -> setStateError(result.message)
+                is GeneralWeatherState.Success -> setStateSuccess(result.data)
+                is GeneralWeatherState.Error -> setStateError(result.message)
             }
         }
     }
 
-    private fun setStateSuccess(list: List<WeatherInfo>?) {
+    private fun setStateSuccess(list: List<WeatherInfoModel>?) {
         state = state.copy(
-            weatherInfo = list,
+            weatherInfoModel = list,
             isLoading = false
         )
     }
