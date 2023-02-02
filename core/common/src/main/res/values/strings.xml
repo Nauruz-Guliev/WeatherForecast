@@ -2,6 +2,26 @@
 <resources>
     <string name="app_name">WeatherApp</string>
     <string name="error">Unknown error</string>
-    <string name="location_error">Unable to get your location due to:</string>
+
+    <string name="location_error">Unable to get your location due to: %1s </string>
     <string name="location_error_unknown">Location is unavailable</string>
+
+    <string name="speed_unit">km/h</string>
+    <string name="wind_speed">%1d %1s</string>
+    <string name="wind">Wind</string>
+
+    <string name="humidity_value">%1s%</string>
+    <string name="humidity">Humidity</string>
+    
+    <string name="degrees_unit">°C</string>
+    <string name="feels_like">Feels like</string>
+    <string name="feels_like_value">%1s %1s</string>
+
+    <string name="search_bar_text">What city?</string>
+
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="map">Map</string>
+    <string name="settings">Settings</string>
+
 </resources>

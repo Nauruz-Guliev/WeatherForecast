@@ -3,7 +3,7 @@ package com.example.city_search_history.di
 import android.content.Context
 import androidx.room.Room
 import com.example.city_search_history.data.WeatherHistoryDatabase
-import com.example.city_search_history.data.dao.WeatherHistoryDao
+import com.example.city_search_history.data.dao.WeatherHistoryDao import com.example.common.utility.convert
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

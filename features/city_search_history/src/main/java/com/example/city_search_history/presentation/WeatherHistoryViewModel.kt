@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.city_search_history.domain.`use-cases`.AddWeatherForecastUseCase
-import com.example.city_search_history.domain.`use-cases`.GetWeatherHistoryListUseCase
+import com.example.city_search_history.domain.useСases.AddWeatherForecastUseCase
+import com.example.city_search_history.domain.useСases.GetWeatherHistoryListUseCase
 import com.example.city_search_history.presentation.mappers.WeatherInfoMapper
 import com.example.city_search_history.presentation.models.WeatherHistoryState
 import com.example.common.models.WeatherInfoModel

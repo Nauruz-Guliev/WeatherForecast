@@ -13,7 +13,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
-import com.example.common.strings.WeatherAppStrings
+import com.example.common.constants.WeatherAppStrings
 
 
 class LocationTrackerImpl @Inject constructor(

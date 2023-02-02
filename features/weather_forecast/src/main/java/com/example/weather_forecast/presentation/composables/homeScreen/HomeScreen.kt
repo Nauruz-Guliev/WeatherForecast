@@ -16,11 +16,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.common.components.AppBar
+import com.example.common.ui.components.AppBar
 import com.example.common.models.WeatherInfoModel
-import com.example.common.theme.ui.FontColor
-import com.example.common.theme.ui.Primary
-import com.example.common.theme.ui.Secondary
+import com.example.common.ui.theme.ui.FontColor
+import com.example.common.ui.theme.ui.Primary
+import com.example.common.ui.theme.ui.Secondary
 import com.example.weather_forecast.presentation.models.WeatherState
 
 
@@ -33,7 +33,6 @@ import java.util.*
 @Composable
 fun WeatherHomeScreen(
     state: WeatherState,
-    date: Date,
     onSearchButtonClicked: ((String) -> Unit)?,
     onSeeMoreClicked: ((WeatherInfoModel) -> Unit)?
 ) {
@@ -86,7 +85,6 @@ fun PreviewWindow() {
     val state = WeatherState(isLoading = false, weatherInfoModel = createDummyWeatherInfo())
     WeatherHomeScreen(
         state = state,
-        date = Calendar.getInstance().time,
         onSearchButtonClicked = null,
         onSeeMoreClicked = null,
     )

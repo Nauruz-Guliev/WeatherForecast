@@ -1,4 +1,4 @@
-package com.example.common.icons
+package com.example.common.ui.icons
 
 import com.example.common.R
 

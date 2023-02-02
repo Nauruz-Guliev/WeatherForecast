@@ -13,9 +13,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.common.components.AppBar
+import com.example.common.ui.components.AppBar
 import com.example.common.models.WeatherInfoModel
-import com.example.common.theme.ui.Primary
+import com.example.common.ui.theme.ui.Primary
 import com.google.accompanist.insets.ui.Scaffold
 import java.text.SimpleDateFormat
 import java.util.*

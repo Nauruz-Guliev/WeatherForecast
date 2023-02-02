@@ -1,4 +1,4 @@
-package com.example.city_search_history.domain.`use-cases`
+package com.example.city_search_history.domain.useСases
 
 import com.example.city_search_history.domain.WeatherHistoryRepository
 import com.example.city_search_history.domain.models.WeatherHistoryModel

@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.common.models.WeatherInfoModel
-import com.example.common.theme.ui.FontColor
-import com.example.common.theme.ui.Primary
+import com.example.common.ui.theme.ui.FontColor
+import com.example.common.ui.theme.ui.Primary
 import java.text.SimpleDateFormat
 import java.util.*
 
