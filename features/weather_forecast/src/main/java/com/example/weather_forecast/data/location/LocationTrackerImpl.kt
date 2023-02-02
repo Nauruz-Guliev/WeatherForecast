@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.common.constants.WeatherAppStrings
 import com.example.weather_forecast.data.exceptions.LocationException
 import com.example.weather_forecast.domain.location.LocationTracker
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -13,7 +14,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
-import com.example.common.constants.WeatherAppStrings
 
 
 class LocationTrackerImpl @Inject constructor(
@@ -67,8 +67,11 @@ class LocationTrackerImpl @Inject constructor(
                     // если всё закрылось
                     addOnCanceledListener {
                         continuation.cancel(
-                            cause = LocationException(application.resources.getString(
-                                WeatherAppStrings.locationUnknownError))
+                            cause = LocationException(
+                                application.resources.getString(
+                                    WeatherAppStrings.locationUnknownError
+                                )
+                            )
                         )
                     }
                 }
